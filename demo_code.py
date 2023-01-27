@@ -113,6 +113,11 @@ def check(x):
     elif x in (10, 20, 30):
         print("Why even?")
 
+def dummy_func_example():
+    x = 1
+    y = 2
+    z = 3
+    return x, y, z
 
 def chained_comparison():
     a = 1
