@@ -32,14 +32,11 @@ jobs:
         pip install pytest-cov django
         pytest --cov=./ --cov-report=xml
 
-    - name: Report test coverage to DeepSource dev (python, go, js, php)
+    - name: Report test coverage to DeepSource dev (python)
       run: |
         curl https://deepsource.io/cli | sh
         export DEEPSOURCE_DSN=$DEEPSOURCE_DSN_DEV
         ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
-        ./bin/deepsource report --analyzer test-coverage --key go --value-file ./go_coverage.out
-        ./bin/deepsource report --analyzer test-coverage --key javascript --value-file ./js_coverage.xml
-        ./bin/deepsource report --analyzer test-coverage --key php --value-file ./php_coverage.xml
     
     - name: Report test coverage to DeepSource dev enterprise (python)
       run: |
@@ -47,13 +44,10 @@ jobs:
         export DEEPSOURCE_DSN=$DEEPSOURCE_DSN_ENTERPRISE_DEV
         ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
         
-    - name: Report test coverage to DeepSource prod (python, go, js, php)  
+    - name: Report test coverage to DeepSource prod (python)  
       run: |
         curl https://deepsource.io/cli | sh
         export DEEPSOURCE_DSN=$DEEPSOURCE_DSN_PROD
         ./bin/deepsource report --analyzer test-coverage --key python --value-file ./coverage.xml
-        ./bin/deepsource report --analyzer test-coverage --key go --value-file ./go_coverage.out
-        ./bin/deepsource report --analyzer test-coverage --key javascript --value-file ./js_coverage.xml
-        ./bin/deepsource report --analyzer test-coverage --key php --value-file ./php_coverage.xml
-        
+
         
